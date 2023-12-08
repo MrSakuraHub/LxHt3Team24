@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Rider projects\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj": {}
+    "C:\\Users\\drag0\\source\\repos\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj": {}
   },
   "projects": {
-    "F:\\Rider projects\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj": {
+    "C:\\Users\\drag0\\source\\repos\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Rider projects\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj",
+        "projectUniqueName": "C:\\Users\\drag0\\source\\repos\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj",
         "projectName": "TelegramBot",
-        "projectPath": "F:\\Rider projects\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj",
-        "packagesPath": "C:\\Users\\danyk\\.nuget\\packages\\",
-        "outputPath": "F:\\Rider projects\\LxHt3Team24\\TelegramBot\\obj\\",
+        "projectPath": "C:\\Users\\drag0\\source\\repos\\LxHt3Team24\\TelegramBot\\TelegramBot.csproj",
+        "packagesPath": "C:\\Users\\drag0\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\drag0\\source\\repos\\LxHt3Team24\\TelegramBot\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "E:\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\danyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\drag0\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
