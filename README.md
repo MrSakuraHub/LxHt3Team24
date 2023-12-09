@@ -20,7 +20,7 @@ https://drive.google.com/file/d/1WxrPeNCF0iT0_amJCIUlpPSM_2np_fNr/view?usp=shari
 
 Cool Team (Team 24) on the third Luxoft Hackathon dedicated to Adaptations of Veterans to peace after a Victory, has presented a following solution:
 
-Database SQL Server deployed onto Google Cloud Engine hosted with both Public and Private IP Access and available all over Internet
+        Database SQL Server deployed onto Google Cloud Engine hosted with both Public and Private IP Access and available all over Internet
 
 Four apps dedicated to be the components of the integral solution to further governmental and NGO's entities in the selected area:
 
