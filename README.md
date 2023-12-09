@@ -17,3 +17,19 @@ https://veteran-fe-admin.onrender.com/admin/dashboard
 Video:
 
 https://drive.google.com/file/d/1WxrPeNCF0iT0_amJCIUlpPSM_2np_fNr/view?usp=sharing
+
+Cool Team (Team 24) on the third Luxoft Hackathon dedicated to Adaptations of Veterans to peace after a Victory, has presented a following solution:
+
+Database SQL Server deployed onto Google Cloud Engine
+
+Four apps dedicated to be the components of the integral solution to further governmental and NGO's entities in the selected area:
+Chat Bot in Telegram
+A Portal and Web Interface for Chat Bot
+An API Server that works with a Databased hosted on Internet allowing to work with data
+An Admin Panel with Chat Bot history, List of Applications and Useful statistics on the information of the programs held by
+
+All parts of the solution are deployed on the Internet
+
+The solution has Scalable Architecture due to wide utilization of Cloud Services, distributed service architecture, configurations.
+
+Thank you everybody for participation!
