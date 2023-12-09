@@ -9,7 +9,7 @@ module.exports = (env, options) => {
     entry: './src/index.tsx',
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'EvgeniaM6 - taxiApp',
+        title: 'LxHt3Team24 - Web Bot',
         template: './src/index.html',
         favicon: './src/favicon.ico',
       }),
