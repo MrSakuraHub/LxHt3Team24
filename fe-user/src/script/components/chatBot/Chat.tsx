@@ -26,21 +26,16 @@ const Chat = () => {
     <div className="chat" onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
       {isShowBot && <ChatBot closeBot={closeBot} />}
       {isShowButtons && !isShowBot && (
-        <div>
-          <button className="chat__button">
-            <a
-              className="chat__link"
-              href="https://t.me/Diia_help_bot?start=X3VybD0lMkZsaW5rJmQ9Mg"
-            >
-              telegram
-            </a>
+        <div className="chat__btn-container">
+          <button className="chat__button btn-telegram">
+            <a className="chat__link" target="_blank" href="https://t.me/csharp_e_Veteran_bot" />
           </button>
         </div>
       )}
       {!isShowBot && (
-        <button className="chat__button" onClick={openBot}>
-          chat
-        </button>
+        <div className="chat__btn-container">
+          <button className="chat__button btn-webchat" onClick={openBot} />
+        </div>
       )}
     </div>
   );
