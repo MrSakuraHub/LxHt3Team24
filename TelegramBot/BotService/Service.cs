@@ -49,6 +49,8 @@ public class BotService
         {
             var message = update.Message;
 
+            Console.WriteLine($"User: {message.From.Username}, Request: {message.Text}, Date: {DateTime.Now}\n");
+
             switch (message.Text)
             {
                 case "/start":
@@ -70,6 +72,8 @@ public class BotService
         }
         else if (update.Type == UpdateType.CallbackQuery)
         {
+            Console.WriteLine($"Callback Query from User: {update.CallbackQuery.From.Username}, Data: {update.CallbackQuery.Data}, Date: {DateTime.Now}\n");
+
             await OnCallbackQueryReceived(update.CallbackQuery, cancellationToken);
         }
     }
@@ -186,7 +190,7 @@ public class BotService
         
         if (questionIndex >= questions.Count)
         {
-            await botClient.SendTextMessageAsync(chatId, "Дякуємо за участь у опитуванні!", cancellationToken: cancellationToken);
+            await botClient.SendTextMessageAsync(chatId, "Дякуємо за участь у опитуванні, ваші відповіді допоможуть нашим спеціалістам краще зрозуміти вас !", cancellationToken: cancellationToken);
             return;
         }
 
