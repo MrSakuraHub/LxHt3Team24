@@ -57,6 +57,9 @@ public class BotService
                 case "/questions":
                     await HandleCustomQuestion(message, cancellationToken);
                     break;
+                case "/survey":
+                    await HandleSurveyCommand(message, cancellationToken);
+                    break;
                 case "/contact":
                     await HandleContactSpecialist(message, cancellationToken);
                     break;
@@ -77,10 +80,11 @@ public class BotService
     }
     private async Task SendWelcomeMessageAsync(long chatId, CancellationToken cancellationToken)
     {
-        string welcomeMessage = "Вас вітає система на базі Єдиного державного реєстру ветеранів війни. " +
+        var welcomeMessage = "Вас вітає система на базі Єдиного державного реєстру ветеранів війни. " +
                                 "Можете скористатися наступними командами, щоб комунікувати зі мною \n" +
                                 "\n /questions - запитання на які я можу дати відповідь" +
-                                "\n /contact - зв'язок із нашим спеціалістом";
+                                "\n /contact - зв'язок із нашим спеціалістом" +
+                                "\n /survey - коротке опитування, яке допоможе нам краще зрозуміти вас";
         await botClient.SendTextMessageAsync(chatId, welcomeMessage, cancellationToken: cancellationToken);
     }
 
@@ -113,15 +117,37 @@ public class BotService
 
     public async Task OnCallbackQueryReceived(CallbackQuery callbackQuery, CancellationToken cancellationToken)
     {
-        switch (callbackQuery.Data)
+        var callbackData = callbackQuery.Data.Split('_');
+        if (callbackData.Length == 3 && (callbackData[0] == "answer"))
         {
-            case "benefits":
-                await HandleBenefits(callbackQuery, cancellationToken);
-                break;
-            case "statuses":
-                await HandleStatuses(callbackQuery, cancellationToken);
-                break;
+            // Обробка відповіді на питання опитування
+            await HandleSurveyResponse(callbackQuery, int.Parse(callbackData[2]), cancellationToken);
         }
+        else
+        {
+            switch (callbackQuery.Data)
+            {
+                case "benefits":
+                    await HandleBenefits(callbackQuery, cancellationToken);
+                    break;
+                case "statuses":
+                    await HandleStatuses(callbackQuery, cancellationToken);
+                    break;
+                // інші випадки обробки зворотних викликів
+            }
+        }
+    }
+    private async Task HandleSurveyResponse(CallbackQuery callbackQuery, int questionIndex, CancellationToken cancellationToken)
+    {
+        var thankYouMessage = "Дякую за відповідь.";
+
+        await botClient.SendTextMessageAsync(
+            chatId: callbackQuery.Message.Chat.Id,
+            text: thankYouMessage,
+            cancellationToken: cancellationToken
+        );
+
+        await SendSurveyAsync(callbackQuery.Message.Chat.Id, questionIndex + 1, cancellationToken);
     }
 
     private async Task HandleStatuses(CallbackQuery callbackQuery, CancellationToken cancellationToken)
@@ -144,7 +170,44 @@ public class BotService
         );
     }
 
+    private async Task HandleSurveyCommand(Message message, CancellationToken cancellationToken)
+    {
+        await SendSurveyAsync(message.Chat.Id, 0, cancellationToken);
+    }
 
+    private async Task SendSurveyAsync(long chatId, int questionIndex, CancellationToken cancellationToken)
+    {
+        var questions = new List<string>
+        {
+            "Як ви себе почуваєте у суспільстві?",
+            "Як ви себе почуваєте у людних місцях?",
+            "Як ви оцінюєте свій настрій?"
+        };
+        
+        if (questionIndex >= questions.Count)
+        {
+            await botClient.SendTextMessageAsync(chatId, "Дякуємо за участь у опитуванні!", cancellationToken: cancellationToken);
+            return;
+        }
+
+        var inlineKeyboard = new InlineKeyboardMarkup(new[]
+        {
+            new[] // перший ряд кнопок
+            {
+                InlineKeyboardButton.WithCallbackData("Погано", $"answer_bad_{questionIndex}"),
+                InlineKeyboardButton.WithCallbackData("Добре", $"answer_good_{questionIndex}"),
+                InlineKeyboardButton.WithCallbackData("Відмінно", $"answer_excellent_{questionIndex}")
+            },
+            
+        });
+
+        await botClient.SendTextMessageAsync(
+            chatId: chatId,
+            text: questions[questionIndex],
+            replyMarkup: inlineKeyboard,
+            cancellationToken: cancellationToken
+        );
+    }
 
     private async Task DefaultHandleAsync(Message message, CancellationToken cancellationToken)
     {
@@ -154,7 +217,7 @@ public class BotService
     private async Task SendUnknownCommandMessageAsync(long chatId, CancellationToken cancellationToken)
     {
         string unknownCommandMessage = $"На жаль, у мене немає відповіді на ваше питання. " +
-                                       "Будь ласка, зверніться до нашого спеціаліста: {AdminUrl} " +
+                                       $"Будь ласка, зверніться до нашого спеціаліста: {AdminUrl} " +
                                        "\n\nВи також можете спробувати ці команди: \n/start \n/questions \n/contact";
         await botClient.SendTextMessageAsync(chatId, unknownCommandMessage, cancellationToken: cancellationToken);
     }
