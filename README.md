@@ -25,6 +25,7 @@ Database SQL Server deployed onto Google Cloud Engine hosted with both Public an
 Four apps dedicated to be the components of the integral solution to further governmental and NGO's entities in the selected area:
 
 
+
 ->Chat Bot in Telegram
 
 ->A Portal and Web Interface for Chat Bot
@@ -32,6 +33,7 @@ Four apps dedicated to be the components of the integral solution to further gov
 ->An API Server that works with a Databased hosted on Internet allowing to work with data
 
 ->An Admin Panel with Chat Bot history, List of Applications and Useful statistics on the information of the programs held by
+
 
 
 All the parts of the solution are deployed on the Internet
