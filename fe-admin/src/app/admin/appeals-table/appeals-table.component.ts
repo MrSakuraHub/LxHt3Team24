@@ -19,7 +19,7 @@ export class AppealsTableComponent implements AfterViewInit {
   dataSource: AppealsTableDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'Status', 'RegistrationDate', 'CloseDate', 'AppealsType',  'options'];
+  displayedColumns = ['id', 'Status', 'RegistrationDate', 'CloseDate', 'AppealsType', 'chat', 'options'];
 
   constructor() {
     this.dataSource = new AppealsTableDataSource();
