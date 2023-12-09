@@ -18,21 +18,23 @@ Video:
 
 https://drive.google.com/file/d/1WxrPeNCF0iT0_amJCIUlpPSM_2np_fNr/view?usp=sharing
 
+Description of a Task: https://docs.google.com/document/d/17rntezuiatTLp3wlRSTCcNCgQ4EHINts0XRi5e5FBm4/edit#heading=h.cn1hv2ou1bra
+
 Cool Team (Team 24) on the third Luxoft Hackathon dedicated to Adaptations of Veterans to peace after a Victory, has presented a following solution:
 
         Database SQL Server deployed onto Google Cloud Engine hosted with both Public and Private IP Access and available all over Internet
 
-Four apps dedicated to be the components of the integral solution to further governmental and NGO's entities in the selected area:
+        Four apps dedicated to be the components of the integral solution to further governmental and NGO's entities in the selected area:
 
 
   
-      ->Chat Bot in Telegram
-      
-      ->A Portal and Web Interface for Chat Bot
-      
-      ->An API Server that works with a Databased hosted on Internet allowing to work with data
-      
-      ->An Admin Panel with Chat Bot history, List of Applications and Useful statistics on the information of the programs held by
+              ->Chat Bot in Telegram
+              
+              ->A Portal and Web Interface for Chat Bot
+              
+              ->An API Server that works with a Databased hosted on Internet allowing to work with data
+              
+              ->An Admin Panel with Chat Bot history, List of Applications and Useful statistics on the information of the programs held by
 
 
 
