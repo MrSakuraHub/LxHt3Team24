@@ -28,11 +28,7 @@ const Chat = () => {
       {isShowButtons && !isShowBot && (
         <div className="chat__btn-container">
           <button className="chat__button btn-telegram">
-            <a
-              className="chat__link"
-              target="_blank"
-              href="https://t.me/Diia_help_bot?start=X3VybD0lMkZsaW5rJmQ9Mg"
-            />
+            <a className="chat__link" target="_blank" href="https://t.me/csharp_e_Veteran_bot" />
           </button>
         </div>
       )}
