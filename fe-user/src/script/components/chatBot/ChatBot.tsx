@@ -14,6 +14,7 @@ const ChatBot = ({ closeBot }: { closeBot: () => void }) => {
 
   const handleSubmitForm: SubmitHandler<FormValues> = (data) => {
     const { message } = data;
+    if (!message) return;
 
     console.log('send request', message);
     const newMessage: MessageData = {
@@ -25,19 +26,33 @@ const ChatBot = ({ closeBot }: { closeBot: () => void }) => {
 
     dispatch(addMessage(newMessage));
     reset();
+
+    setTimeout(() => {
+      console.log('get answer');
+      const newBotMessage: MessageData = {
+        date: Date.now(),
+        author: 'Bot',
+        isUser: false,
+        text: 'Ми спробуємо Вам допомогти',
+      };
+
+      dispatch(addMessage(newBotMessage));
+    }, 500);
   };
 
   return (
     <div className="chat-bot">
-      <div>
-        <button onClick={closeChatBot}>X</button>
+      <div className="chat-bot__close">
+        <button className="chat-bot__close-btn" onClick={closeChatBot}>
+          ✖
+        </button>
       </div>
-      <h4>ChatBot</h4>
+      <h4 className="chat-bot__title">Чат-бот</h4>
       <ChatHistory />
       <form className="chat-bot__form" onSubmit={handleSubmit(handleSubmitForm)}>
         <input className="chat-bot__input" type="text" {...register('message')} />
         <button type="submit" className="chat-bot__submit">
-          {'>'}
+          {'➤'}
         </button>
       </form>
     </div>
