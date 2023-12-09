@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { iUser, Users } from '../shared/models/user.model'
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class AuthService {
   private _currentUser: BehaviorSubject<any>;
   public currentUser$: Observable<Partial<iUser>>;
 
-  constructor() {
+
+  constructor(private http: HttpClient) {
     let _isAuth = localStorage.getItem('_isAuth') === 'true' ? true : false;
     let user = localStorage.getItem('User');
     user ? user = JSON.parse(user) : null;
@@ -21,7 +23,19 @@ export class AuthService {
     this.isAuth$ = this._isAuth.asObservable();
   }
 
-  tryLogIn(user: Partial<iUser>): boolean {
+  tryLogIn(user: iUser): boolean {
+    let findByLoginUser = Users.find((u) => u.email === user.email);
+    let auth = findByLoginUser
+      ? Users.find((u) => u.password === user.password)?.password === user.password
+      : false;
+    if (auth) {
+      this._logIn();
+      localStorage.setItem('User',JSON.stringify(findByLoginUser))
+      this._currentUser.next(findByLoginUser ? findByLoginUser : {});
+    }
+    return auth;
+  }
+  LogIn(user: iUser): boolean {
     let findByLoginUser = Users.find((u) => u.email === user.email);
     let auth = findByLoginUser
       ? Users.find((u) => u.password === user.password)?.password === user.password
@@ -45,12 +59,4 @@ export class AuthService {
     localStorage.removeItem('User');
     localStorage.setItem('_isAuth', 'false');
   }
-
-  // isAuthenticated(): Promise<boolean> {
-  //   return new Promise((resolve) => {
-  //     setTimeout(() => {
-  //       resolve(this._isAuth);
-  //     }, 500);
-  //   });
-  // }
 }
