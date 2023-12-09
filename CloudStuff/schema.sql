@@ -6,4 +6,4 @@ create table Appeals(Id int, RegistrationTime datetime, Conversation ntext, Admi
 
 create table Locations (Id int, Locaton varchar(80), PRIMARY KEY(Id));
 
-create table Admins(Id int, AdminLogin varchar(19), PasswordHash varchar(29) PRIMARY KEY(Id));
+create table Admins(Id int, AdminLogin varchar(19), PasswordHash varchar(100) PRIMARY KEY(Id));
