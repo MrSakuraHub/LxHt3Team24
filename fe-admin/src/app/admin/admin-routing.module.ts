@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../auth.guard';
+import { AuthGuardFunction } from '../auth.guard';
 import { ChatComponent } from './chat/chat.component';
 import { AppealsTableComponent } from './appeals-table/appeals-table.component';
 import { UsersTableComponent } from './users-table/users-table.component';
@@ -15,22 +15,22 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardFunction],
   },
   {
     path: 'appeals',
     component: AppealsTableComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardFunction],
   },
   {
     path: 'chat',
     component: ChatComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardFunction],
   },
   {
     path: 'users',
     component: UsersTableComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardFunction],
   },
   { path: '**', redirectTo: '/404' },
 ];
